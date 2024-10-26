@@ -1,0 +1,203 @@
+/* Reset y estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+   
+    min-height: 100vh;
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor principal */
+.container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caja de login */
+.login-box {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    background: linear-gradient(135deg, #046574, #10193a);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Sección de reconocimiento facial */
+.face-recognition {
+    flex: 1;
+    max-width: 40%; /* Ajustar el tamaño para que sea un poco más pequeño */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #0a2e38; /* Fondo oscuro para destacar la cámara */
+    border: 4px solid rgba(255, 255, 255, 0.2); /* Borde externo translúcido */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 10px; /* Espacio entre el borde y la cámara */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra para resaltar el contenedor */
+}
+
+#input_video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; /* Bordes redondeados en el video */
+    object-fit: cover; /* Ocupar todo el espacio del contenedor */
+    border: 4px solid #4e91ce; /* Borde color azul claro alrededor de la cámara */
+    box-shadow: 0 0 10px rgba(78, 145, 206, 0.8); /* Sombra azul para destacar el video */
+}
+
+#output_canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* El canvas no interferirá con las interacciones del usuario */
+    border-radius: 10px; /* Bordes redondeados en el canvas */
+}
+
+.separator-line {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Formulario de login */
+.login-form {
+    flex: 1.5;
+    /* modificado */
+    font-family: "Prociono", serif;
+    /* ############ */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-form h2 {
+    /* modificado */
+    font-family: "Prociono", serif;
+    /* #############  */
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+/* Campos de entrada */
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px 30px 10px 10px;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    background: transparent;
+    color: #ffffff;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.input-box input:focus {
+    border-bottom-color: #ffffff;
+    outline: none;
+}
+
+.input-box .icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+}
+
+/* Opciones adicionales */
+.options {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.forgot-password {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+/* Botón de acceso */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background-color: #ffffff;
+    color: #10193a;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Mensajes flash */
+.flash-messages {
+    margin-top: 20px;
+    color: #ff6b6b;
+    text-align: center;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .login-box {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .face-recognition, .login-form {
+        max-width: 100%;
+    }
+
+    #input_video, #output_canvas {
+        border-radius: 10px 10px 0 0;
+    }
+
+    .separator-line {
+        display: none;
+    }
+
+    .login-form {
+        padding: 20px;
+    }
+
+    .login-form h2 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-form h2 {
+        font-size: 1.8em;
+    }
+
+    .input-box input, button {
+        font-size: 0.9em;
+    }
+}

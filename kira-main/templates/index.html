@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Reconocimiento Facial</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="user-info">
+            <div class="user-avatar"></div>
+            <h2 class="user-name">{{ current_user.username }}</h2>
+        </div>
+        <ul class="menu">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Alarmas</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="top-bar">
+            <button class="menu-toggle">☰</button>
+            <h2 class="user-name">Bienvenido al sistema de reconocimiento facial</h2>
+            <div class="action-buttons">
+                <button onclick="window.location.href='/create_user'">Agregar Usuario</button>
+            </div>
+        </div>
+        <div class="content-area">
+            <h2>Lista de Usuarios</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre de Usuario</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.role }}</td>
+                        <td>
+                            <button onclick="window.location.href='/edit_user/{{ user.username }}'">Editar</button>
+                            <button onclick="eliminarUsuario('{{ user.username }}')">Eliminar</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function eliminarUsuario(username) {
+            if (confirm('¿Estás seguro de que deseas eliminar al usuario ' + username + '?')) {
+                fetch('/delete_user/' + username, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Usuario eliminado correctamente.');
+                        window.location.reload();
+                    } else {
+                        alert('Hubo un problema al eliminar el usuario.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error al eliminar el usuario.');
+                });
+            }
+        }
+    </script>
+</body>
+</html>

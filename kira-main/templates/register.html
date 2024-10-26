@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Kiraface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-register.css') }}">
+</head>
+<body>
+    <div class="register-container">
+        <!-- Sección de información y bienvenida -->
+        <div class="info-section">
+            <h1>KIRAFACE</h1>
+            <p>¡Bienvenido a nuestra plataforma de Reconocimiento Facial con Deep Learning para seguridad avanzada! 
+            Ofrecemos soluciones precisas de control de acceso, identificación y monitoreo en tiempo real. Con la tecnología más avanzada, garantizamos máxima protección y confianza en cada entorno. 
+            ¡Descubre cómo podemos asegurar tus espacios de manera inteligente!</p>
+        </div>
+        <!-- Sección del formulario de registro -->
+        <div class="form-section">
+            <h2>Crear cuenta</h2>
+            <form>
+                <!-- Campos de nombres y apellidos en una fila -->
+                <div class="input-row">
+                    <input type="text" placeholder="Nombres" required>
+                    <input type="text" placeholder="Apellidos" required>
+                </div>
+                <!-- Campos de email -->
+                <input type="email" placeholder="Email" required>
+                <!-- Campos de ocupación y celular en una fila -->
+                <div class="input-row">
+                    <input type="text" placeholder="Ocupación" required>
+                    <input type="text" placeholder="Celular" required>
+                </div>
+                <!-- Campos de contraseña y confirmación -->
+                <input type="password" placeholder="Contraseña" required>
+                <input type="password" placeholder="Confirmar Contraseña" required>
+                <!-- Botones de reconocimiento facial y registrarse -->
+                <button type="button" class="facial-button">Reconocimiento facial</button>
+                <button type="submit" class="register-button">REGISTRARSE</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

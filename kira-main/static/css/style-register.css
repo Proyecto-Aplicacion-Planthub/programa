@@ -1,0 +1,148 @@
+/* Fondo del cuerpo */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('../images/background-register.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+}
+
+/* Sección principal del registro */
+.register-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+    border-radius: 10px;
+}       
+
+/* Sección de información */
+.info-section {
+    flex: 1;
+    text-align: left;
+    padding: 20px;
+    max-width: 500px;
+}
+
+.info-section h1 {
+    font-size: 80px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.info-section p {
+    font-size: 22px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Sección del formulario */
+.form-section {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+    backdrop-filter: blur(10px);
+    padding: 5%; /* Padding relativo */
+    border-radius: 10px;
+    max-width: 90%; /* Ajusta el ancho máximo relativo al tamaño del contenedor */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+/* Título del formulario */
+.form-section h2 {
+    font-size: 2.5em; /* Tamaño del título relativo */
+    margin-bottom: 2%; /* Espacio inferior relativo */
+    text-align: center;
+    color: #000000; /* Color del texto negro */
+    font-weight: bold;
+    position: relative;
+}
+
+/* Línea divisoria debajo del título */
+.form-section h2::after {
+    content: "";
+    display: block;
+    width: 80%; /* Ancho de la línea relativo */
+    height: 2px;
+    background-color: #000000; /* Color negro */
+    margin: 1% auto; /* Espaciado relativo */
+}
+
+/* Campos de entrada */
+form input {
+    width: 95%; /* Ajusta el ancho de los campos */
+    margin-bottom: 3%; /* Espacio relativo entre los campos */
+    padding: 1em; /* Padding relativo para adaptarse al tamaño del texto */
+    border-radius: 20px; /* Esquinas redondeadas */
+    border: none;
+    outline: none;
+    font-size: 1em; /* Tamaño de la fuente relativo */
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000000; /* Texto negro */
+}
+
+/* Fila de inputs en línea */
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 5%; /* Espacio relativo entre los campos */
+}
+
+.input-row input {
+    width: 48%; /* Ancho relativo para los campos en una fila */
+}
+
+/* Botón de reconocimiento facial */
+.facial-button {
+    width: 60%; /* Ajusta el ancho del botón */
+    padding: 1em;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #00FF99, #00CC66); /* Degradado del botón */
+    color: #000000;
+    text-align: center; /* Centra el texto dentro del botón */
+    margin-left: 20%; /* Centra el botón */
+    margin-right: 20%; /* Centra el botón */
+}
+
+/* Botón de registro */
+.register-button {
+    width: 50%; /* Ajusta el ancho del botón */
+    padding: 1em;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #00FFFF; /* Color del botón */
+    color: #000000;
+    text-align: center; /* Centra el texto dentro del botón */
+    margin-left: 25%; /* Centra el botón */
+    margin-right: 25%; /* Centra el botón */
+}
+
+
+/* Media query para dispositivos pequeños por ancho o altura */
+@media (max-width: 768px), (max-height: 600px) {
+    /* Oculta la sección de información */
+    .info-section {
+        display: none;
+    }
+    
+    /* Ajusta el ancho del formulario para centrarlo */
+    .form-section {
+        flex: 1;
+        max-width: 95%;
+        margin: 0 auto; /* Centra el cuadro de registro */
+    }
+}

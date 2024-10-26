@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-editar.css') }}">
+    <title>Editar Usuario</title>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="user-info">
+            <div class="user-avatar"></div>
+            <h2 class="user-name">{{ current_user.username }}</h2>
+        </div>
+        <ul class="menu">
+            <li><a href="/">Inicio</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Alarmas</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="top-bar">
+            <button class="menu-toggle">☰</button>
+            <h2 class="user-name">Editar Usuario</h2>
+        </div>
+        <div class="content-area">
+            <form action="/update_user" method="POST">
+                <input type="hidden" name="username" value="{{ user.username }}">
+
+                <label for="new_username">Nuevo Nombre de Usuario:</label>
+                <input type="text" id="new_username" name="new_username" value="{{ user.username }}" required><br><br>
+
+                <label for="password">Nueva Contraseña (dejar en blanco para no cambiar):</label>
+                <input type="password" id="password" name="password"><br><br>
+
+                <label for="role">Rol:</label>
+                <select id="role" name="role" required>
+                    <option value="admin" {% if user.role == 'admin' %} selected {% endif %}>Administrador</option>
+                    <option value="coadmin" {% if user.role == 'coadmin' %} selected {% endif %}>Coadministrador</option>
+                    <option value="user" {% if user.role == 'user' %} selected {% endif %}>Usuario</option>
+                </select><br><br>
+
+                <!-- Opción para restablecer la configuración de TOTP -->
+                <div class="form-group">
+                    <label for="reset_totp">Restablecer TOTP:</label>
+                    <input type="checkbox" id="reset_totp" name="reset_totp">
+                    <span>Marcar para restablecer la autenticación TOTP para este usuario.</span>
+                </div><br>
+
+                <button type="submit">Actualizar Usuario</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

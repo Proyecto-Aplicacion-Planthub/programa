@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style-verify-totp.css') }}">
+    <title>Verificación TOTP</title>
+</head>
+<body>
+    <div class="container">
+        <div class="verify-totp-box">
+            <h2>Verificación de TOTP</h2>
+            <form action="{{ url_for('verify_totp') }}" method="POST">
+                <div class="input-box">
+                    <label for="totp">Código TOTP:</label>
+                    <input type="text" id="totp" name="totp" placeholder="Ingrese el código TOTP" required>
+                </div>
+                <button type="submit">Verificar</button>
+            </form>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>
+
